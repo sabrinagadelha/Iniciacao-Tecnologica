@@ -18,7 +18,7 @@ arquivo.write("G28 X0 Y0\n")
 arquivo.write(f"G92 X{x_menor} Y{y_menor}\n")
 arquivo.write("M117 Mapeando...\n")
 def gcode_file (x1, x2, y1, y2):
-    tamanho_da_cama = 200
+    tamanho_da_cama = 2560
     comprimento_do_passo = 1
     numero_da_linha = 0
     tempo_de_espera = 200
