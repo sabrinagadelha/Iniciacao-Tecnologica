@@ -17,21 +17,11 @@ arquivo.write("G90\n")
 arquivo.write("G28 X0 Y0\n")
 arquivo.write(f"G92 X{x_menor} Y{y_menor}\n")
 arquivo.write("M117 Mapeando...\n")
-def gcode_file (x1, x2, y1, y2):
-    tamanho_da_cama = 2560
-    comprimento_do_passo = 1
+def gcode_file (x_maior, x_menor, y_maior, y_menor):
+    tamanho_da_cama = 2560 #comprimento real: 25,6 mm
+    comprimento_do_passo = 10 #comprimento real: 0,1 mm
     numero_da_linha = 0
-    tempo_de_espera = 200
-    if x1 > x2:
-        x_maior = x1
-        y_maior = y1
-        x_menor = x2
-        y_menor = y2
-    else:
-        x_maior = x2
-        y_maior = y2
-        x_menor = x1
-        y_menor = y1
+    tempo_de_espera = 100 #em milissegundos
     altura = y_maior - y_menor
     largura = x_maior - x_menor
     if altura < tamanho_da_cama:
@@ -57,6 +47,6 @@ def gcode_file (x1, x2, y1, y2):
         y_menor += comprimento_do_passo
         print(f"G0 Y{y_menor}", file = arquivo)
         print(f"G4 P{tempo_de_espera}", file = arquivo)
-gcode_file(x1, x2, y1, y2)
+gcode_file(x_maior, x_menor, y_maior, y_menor)
 arquivo.write("M84 X Y")
 arquivo.close()
