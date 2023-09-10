@@ -7,9 +7,13 @@ y2 = float(p2[1])
 if x1 > x2:
     x_menor = x2
     y_menor = y2
+    x_maior = x1
+    y_maior = y1
 else:
     x_menor = x1
     y_menor = y1
+    x_maior = x2
+    y_maior = y2
 nome = input("Insira o endereço do arquivo: ")
 arquivo = open(nome, "w")
 arquivo.write("G21\n")
